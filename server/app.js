@@ -1,21 +1,12 @@
-import bodyParser from "body-parser";
 import express from "express";
-import testConnection from "./db/db.js";
+import itemRoutes from "./routes/itemRoutes.js";
 
 const app = express();
-const port = 3002;
+const port = 3005;
 
-app.use(bodyParser.json());
+app.use('api/items', itemRoutes);
 
 app.listen(port, () => {
-  console.log(`Express server running on port ${port}!`);
+  console.log(`Express server running on port ${port}`);
 });
 
-testConnection()
-  .then(() => {
-    //test express server code
-    console.log("Testing connection Express server running on port 3000!");
-  })
-  .catch((err) => {
-    console.error("database connection failed", err);
-  });
