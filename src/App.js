@@ -11,7 +11,7 @@ export default function MyTodoApp() {
 
   const removeItem = (index) => {
     const newItems = [...items];
-    setItems(newItems.filter((_, i) => i!== index));
+    setItems(newItems.filter((_, i) => i !== index));
   };
 
   return (
