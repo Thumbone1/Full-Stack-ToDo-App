@@ -14,8 +14,7 @@ function Form({ addItem }) {
   }
   return (
     <form className="input-form">
-      <label>Todo</label>
-      <input type="text" placeholder="next todo" ref={ref} required/>
+      <input type="text" placeholder="next todo" ref={ref} required autoFocus />
       <Button submit={handleSubmit} />
     </form>
   );
