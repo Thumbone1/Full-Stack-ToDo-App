@@ -12,13 +12,13 @@ export const sequelize = new Sequelize({
   database: process.env.DB_DATABASE,
 });
 
-export async function testConnection() {
+export async function testDbConnection() {
   try {
     await sequelize.authenticate();
+    console.log("Connection to DB has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database in db.js:", error);
   }
 }
 
-export default sequelize;
 

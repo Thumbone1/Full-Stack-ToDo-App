@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db.js";
 
-const Item = sequelize.define("item", {
+const Item = sequelize.define("Item", {
   title: {
     type: DataTypes.STRING, 
     allowNull: false,
