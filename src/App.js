@@ -1,27 +1,55 @@
 import Form from "components/Form";
 import TodoElement from "components/TodoElement";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const apiEndpoint = "http://localhost:3005/";
 
 export default function MyTodoApp() {
   const [items, setItems] = useState([]);
 
+  useEffect(() => {
+    fetch(apiEndpoint, { method: "GET" })
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data);
+      })
+      .catch((err) => console.log("Error fetching data", err));
+  }, []);
+
   const addItem = (item) => {
-    setItems([...items, item]);
+    if (item) {
+      fetch(apiEndpoint, {
+        method: "POST",
+        body: JSON.stringify({ title: item }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setItems([...items, data]);
+        })
+        .catch((err) => console.log("Error fetching data", err));
+    }
   };
 
-  const removeItem = (index) => {
-    const newItems = [...items];
-    setItems(newItems.filter((_, i) => i !== index));
+  const removeItem = (id) => {
+    fetch(apiEndpoint + id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(setItems(items.filter((item) => item.id !== id)));
   };
 
   return (
     <div className="todo-container">
       <Form addItem={addItem} />
-      {items.map((item, index) => (
+      {items.map((item) => (
         <TodoElement
-          id={index} // have to pass id as a prop
-          key={index} // have to use key for iteration (cannot pass key as a prop)
-          text={item}
+          key={item.id}
+          id={item.id}
+          text={item.title}
           removeItem={removeItem}
           checked={false}
         />

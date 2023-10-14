@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import { testDbConnection } from "./db/db.js";
 import Item from "./db/models/Item.js";
@@ -6,6 +7,7 @@ const app = express();
 const port = 3005;
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", async (req, res) => {
   try {
