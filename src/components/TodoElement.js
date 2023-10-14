@@ -5,7 +5,17 @@ function TodoElement({ type = "checkbox", checked, text, id, removeItem }) {
 
   return (
     <div className="todo-element">
-      <input type={type} checked={checked} onChange={handleCheck} />
+      <div class="checkbox-wrapper">
+        <input
+          id="check"
+          type={type}
+          checked={checked}
+          onChange={handleCheck}
+        />
+        <label for="check">
+          <span></span>
+        </label>
+      </div>
       <span>{text}</span>
     </div>
   );

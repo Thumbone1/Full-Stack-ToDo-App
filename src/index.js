@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import MyTodoApp from "./App";
 import "./index.css";
+import "./checkbox.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

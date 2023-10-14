@@ -18,12 +18,12 @@ body {
 
 .todo-container {
   min-width: 35vw;
-  min-height: 60vh;
+  min-height: 80vh;
   max-height: 80vh;
   background-color: rgb(245, 180, 189);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 8px;
+  padding: 30px;
+  border-radius: 10px;
   overflow-y: auto;
 }
 
@@ -62,9 +62,5 @@ input[type="text"] {
   display: flex;
   align-items: center;
   margin: 8px;
-  padding: 0px 15px;
-}
-
-input[type="checkbox"] {
-  margin-right: 8px;
+  gap: 15px;
 }
